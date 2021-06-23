@@ -2,12 +2,34 @@
 
 //Determining the winner
 
-//Computer
-computerPlay();
-
 //User
 
-//Miscellaneous
+let result = window.prompt("Please enter Rock, Paper, or Scissors.");
+
+function playerChoice(choice) {
+    if (choice.toLowerCase() == "rock") {
+        return ("Rock");
+    }
+    else if (choice.toLowerCase() == "paper") {
+        return ("Paper");
+    }
+    else if (choice.toLowerCase() == "scissors") {
+        return ("Scissors");
+    }
+    else {
+        console.log("Sorry please reload and try again");
+    }
+}
+
+function playerPlay() {
+    let player = playerChoice(result);
+    console.log("You played", player); 
+}
+playerPlay();
+
+//Computer
+
+computerPlay();
 
 function getRandomNumber() {
    return Math.floor(Math.random() * 3) + 1
@@ -27,5 +49,5 @@ function computerChoice() {
 
 function computerPlay() {
     let computer = computerChoice();
-    console.log(computer);
+    console.log("The computer played",computer);
  }
