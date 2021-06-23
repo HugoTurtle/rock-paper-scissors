@@ -1,20 +1,27 @@
-//Building the game in console
+//Building the game in console//
+const Rock = "Rock";
+const Paper = "Paper";
+const Scissors = "Scissors";
+//User//
 
-//Determining the winner
+function promptUser() {
+    let result = window.prompt("Please enter Rock, Paper, or Scissors.");
+    return result;
+}
 
-//User
+let promptPlayer = promptUser(); //Stored to compare strings
 
-let result = window.prompt("Please enter Rock, Paper, or Scissors.");
+function playerChoice() {
+    let choice = promptPlayer;
 
-function playerChoice(choice) {
     if (choice.toLowerCase() == "rock") {
-        return ("Rock");
+        return (Rock);
     }
     else if (choice.toLowerCase() == "paper") {
-        return ("Paper");
+        return (Paper);
     }
     else if (choice.toLowerCase() == "scissors") {
-        return ("Scissors");
+        return (Scissors);
     }
     else {
         console.log("Sorry please reload and try again");
@@ -22,14 +29,16 @@ function playerChoice(choice) {
 }
 
 function playerPlay() {
-    let player = playerChoice(result);
-    console.log("You played", player); 
+    let player = playerChoice();
+        if (!(player == undefined)) {
+            console.log("You played", player); 
+        }
 }
-playerPlay();
+playerPlay(); //Used to display the outcome of the player
 
-//Computer
+//Computer//
 
-computerPlay();
+computerPlay(); //Used to display the outcome of the computer
 
 function getRandomNumber() {
    return Math.floor(Math.random() * 3) + 1
@@ -39,11 +48,11 @@ function computerChoice() {
     let randomNumber = getRandomNumber()
     switch(randomNumber) {
         case 1 : 
-            return "Rock";
+            return Rock;
         case 2 :
-            return "Paper";
+            return Paper;
         case 3 : 
-            return "Scissors";
+            return Scissors;
     }
 };
 
@@ -51,3 +60,44 @@ function computerPlay() {
     let computer = computerChoice();
     console.log("The computer played",computer);
  }
+
+ //Determining the winner//
+
+ function determineWinner(playerSelection, computerSelection) {
+
+    if (playerSelection == Rock) {
+        if (computerSelection == Paper) {
+            return "You Lose! Paper beats Rock";
+        }
+        else if (computerSelection == Scissors) {
+            return "You Win! Rock beats Scissors";
+        }
+        else {
+            return "It's a tie!";
+        }
+
+    }
+    if (playerSelection == Paper) {
+        if (computerSelection == Rock) {
+            return "You Win! Paper beats Rock";
+        }
+        else if (computerSelection == Scissors) {
+            return "You Lose! Scissors beats Paper";
+        }
+        else {
+            return "It's a tie!";
+        }
+    }
+    if (playerSelection == Scissors) {
+        if (computerSelection == Rock) {
+            return "You Lose! Rock beats Scissors";
+        }
+        else if (computerSelection == Paper) {
+            return "You Win! Scissors beats Paper";
+        }
+        else {
+            return "It's a tie!";
+        } 
+    }
+ }
+ console.log(determineWinner(playerChoice(), computerChoice() ));
