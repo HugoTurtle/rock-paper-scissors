@@ -1,7 +1,9 @@
 //Building the game in console//
+
 const Rock = "Rock";
 const Paper = "Paper";
 const Scissors = "Scissors";
+
 //User//
 
 function promptUser() {
@@ -91,4 +93,10 @@ function computerChoice() {
         } 
     }
  }
- console.log(determineWinner(playerChoice(), computerChoice() ));
+
+ function game() {
+     for(let i = 0; i < 5; ++i) {
+        console.log(determineWinner(playerChoice(), computerChoice() ));
+     }
+ }
+game();
