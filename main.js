@@ -9,18 +9,19 @@ function promptUser() {
     return result;
 }
 
-let promptPlayer = promptUser(); //Stored to compare strings
-
 function playerChoice() {
-    let choice = promptPlayer;
+    let choice =  promptUser();
 
-    if (choice.toLowerCase() == "rock") {
+    if (choice.toLowerCase() === "rock") {
+        console.log("You played Rock");
         return (Rock);
     }
-    else if (choice.toLowerCase() == "paper") {
+    else if (choice.toLowerCase() === "paper") {
+        console.log("You played Paper");
         return (Paper);
     }
-    else if (choice.toLowerCase() == "scissors") {
+    else if (choice.toLowerCase() === "scissors") {
+        console.log("You played Scissors");
         return (Scissors);
     }
     else {
@@ -28,17 +29,8 @@ function playerChoice() {
     }
 }
 
-function playerPlay() {
-    let player = playerChoice();
-        if (!(player == undefined)) {
-            console.log("You played", player); 
-        }
-}
-playerPlay(); //Used to display the outcome of the player
 
 //Computer//
-
-computerPlay(); //Used to display the outcome of the computer
 
 function getRandomNumber() {
    return Math.floor(Math.random() * 3) + 1
@@ -48,28 +40,27 @@ function computerChoice() {
     let randomNumber = getRandomNumber()
     switch(randomNumber) {
         case 1 : 
+            console.log("The computer played",Rock);
             return Rock;
         case 2 :
+            console.log("The computer played",Paper);
             return Paper;
         case 3 : 
+            console.log("The computer played",Scissors);
             return Scissors;
     }
 };
 
-function computerPlay() {
-    let computer = computerChoice();
-    console.log("The computer played",computer);
- }
 
  //Determining the winner//
 
  function determineWinner(playerSelection, computerSelection) {
 
-    if (playerSelection == Rock) {
-        if (computerSelection == Paper) {
+    if (playerSelection === Rock) {
+        if (computerSelection === Paper) {
             return "You Lose! Paper beats Rock";
         }
-        else if (computerSelection == Scissors) {
+        else if (computerSelection === Scissors) {
             return "You Win! Rock beats Scissors";
         }
         else {
@@ -77,22 +68,22 @@ function computerPlay() {
         }
 
     }
-    if (playerSelection == Paper) {
-        if (computerSelection == Rock) {
+    if (playerSelection === Paper) {
+        if (computerSelection === Rock) {
             return "You Win! Paper beats Rock";
         }
-        else if (computerSelection == Scissors) {
+        else if (computerSelection === Scissors) {
             return "You Lose! Scissors beats Paper";
         }
         else {
             return "It's a tie!";
         }
     }
-    if (playerSelection == Scissors) {
-        if (computerSelection == Rock) {
+    if (playerSelection === Scissors) {
+        if (computerSelection === Rock) {
             return "You Lose! Rock beats Scissors";
         }
-        else if (computerSelection == Paper) {
+        else if (computerSelection === Paper) {
             return "You Win! Scissors beats Paper";
         }
         else {
