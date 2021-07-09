@@ -99,4 +99,4 @@ function computerChoice() {
         console.log(determineWinner(playerChoice(), computerChoice() ));
      }
  }
-game();
+// game();
