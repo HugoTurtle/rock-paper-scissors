@@ -21,3 +21,12 @@ button {
     width: 300px; 
     border-color: transparent;
 }
+.rock-img {
+    width: 150px;
+}
+.paper-img {
+    width: 170px;
+}
+.scissor-img {
+    width: 150px;
+}
