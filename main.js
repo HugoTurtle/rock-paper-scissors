@@ -3,31 +3,27 @@
 const Rock = "Rock";
 const Paper = "Paper";
 const Scissors = "Scissors";
-
+let playerScore = 0;
+let computerScore = 0;
 //User//
 
-function promptUser() {
-    let result = window.prompt("Please enter Rock, Paper, or Scissors.");
-    return result;
-}
+function playerChoice(choice) {
 
-function playerChoice() {
-    let choice =  promptUser();
-
-    if (choice.toLowerCase() === "rock") {
+    if (choice === "rockBtn") {
         console.log("You played Rock");
         return (Rock);
     }
-    else if (choice.toLowerCase() === "paper") {
+    else if (choice === "paperBtn") {
         console.log("You played Paper");
         return (Paper);
     }
-    else if (choice.toLowerCase() === "scissors") {
+    else if (choice === "scissorBtn") {
         console.log("You played Scissors");
         return (Scissors);
     }
     else {
         console.log("Sorry please reload and try again");
+        return " ";
     }
 }
 
@@ -60,9 +56,11 @@ function computerChoice() {
 
     if (playerSelection === Rock) {
         if (computerSelection === Paper) {
+            computerScore += 1;
             return "You Lose! Paper beats Rock";
         }
         else if (computerSelection === Scissors) {
+            playerScore += 1;
             return "You Win! Rock beats Scissors";
         }
         else {
@@ -72,9 +70,11 @@ function computerChoice() {
     }
     if (playerSelection === Paper) {
         if (computerSelection === Rock) {
+            playerScore += 1;
             return "You Win! Paper beats Rock";
         }
         else if (computerSelection === Scissors) {
+            computerScore += 1;
             return "You Lose! Scissors beats Paper";
         }
         else {
@@ -83,9 +83,11 @@ function computerChoice() {
     }
     if (playerSelection === Scissors) {
         if (computerSelection === Rock) {
+            computerScore += 1;
             return "You Lose! Rock beats Scissors";
         }
         else if (computerSelection === Paper) {
+            playerScore += 1;
             return "You Win! Scissors beats Paper";
         }
         else {
@@ -94,9 +96,23 @@ function computerChoice() {
     }
  }
 
- function game() {
-     for(let i = 0; i < 5; ++i) {
-        console.log(determineWinner(playerChoice(), computerChoice() ));
-     }
+function game() {
+    const buttons = document.querySelectorAll('button');
+
+    buttons.forEach((button) => {
+    
+        button.addEventListener('click', () => {
+            console.log(determineWinner(playerChoice(button.id), computerChoice() ));
+            console.log(playerScore);
+            console.log(computerScore);
+            if(playerScore == 5) {
+                document.getElementById("button").disabled = true;
+            }
+            else if(computerScore == 5) {
+                document.getElementById("button").disabled = true;
+            }
+        });
+    }); //End for each
  }
-// game();
+
+ game();
