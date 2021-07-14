@@ -105,11 +105,14 @@ function game() {
             console.log(determineWinner(playerChoice(button.id), computerChoice() ));
             console.log(playerScore);
             console.log(computerScore);
-            if(playerScore == 5) {
-                document.getElementById("button").disabled = true;
+            if(playerScore == 5 || computerScore == 5) {
+                var elems = document.getElementsByClassName("btn");
+                for(var i = 0; i < elems.length; i++) {
+                    elems[i].disabled = true;
+                }
             }
-            else if(computerScore == 5) {
-                document.getElementById("button").disabled = true;
+            else {
+                document.querySelector('button').disabled = false;
             }
         });
     }); //End for each
