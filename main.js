@@ -1,10 +1,9 @@
-//Building the game in console//
-
 const Rock = "Rock";
 const Paper = "Paper";
 const Scissors = "Scissors";
 let playerScore = 0;
 let computerScore = 0;
+
 //User//
 
 function playerChoice(choice) {
@@ -97,14 +96,24 @@ function computerChoice() {
  }
 
 function game() {
-    const buttons = document.querySelectorAll('button');
+    const buttons = document.querySelectorAll('button'); //Makes a node list of all the buttons
+    const textContainer = document.querySelector('#text-container'); //Grabs an element where I'll put all the text
+    const div = document.createElement('div');  //Box surronding text                 
+    div.setAttribute('style', 'background-color: #eef5db; margin: auto; width: 50%; border: 3px solid #4f6367'); //Styling the box
+    const p = document.createElement('p'); //text
+    p.setAttribute('style', 'white-space: pre;'); //Used for white space and new lines
 
     buttons.forEach((button) => {
     
         button.addEventListener('click', () => {
-            console.log(determineWinner(playerChoice(button.id), computerChoice() ));
-            console.log(playerScore);
-            console.log(computerScore);
+
+            p.textContent = determineWinner(playerChoice(button.id), computerChoice()) + "\r\n";
+            p.textContent += playerScore + "-" + computerScore;
+   
+            div.appendChild(p);
+            textContainer.appendChild(div);
+
+
             if(playerScore == 5 || computerScore == 5) {
                 var elems = document.getElementsByClassName("btn");
                 for(var i = 0; i < elems.length; i++) {
