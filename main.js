@@ -101,20 +101,26 @@ function game() {
     const div = document.createElement('div');  //Box surronding text                 
     div.setAttribute('style', 'background-color: #eef5db; margin: auto; width: 50%; border: 3px solid #4f6367'); //Styling the box
     const p = document.createElement('p'); //text
-    p.setAttribute('style', 'white-space: pre;'); //Used for white space and new lines
+    p.setAttribute('style', 'white-space: pre; text-align: center; font-size: 20px;'); //Used for new lines, as well as styling the text
 
     buttons.forEach((button) => {
     
         button.addEventListener('click', () => {
 
             p.textContent = determineWinner(playerChoice(button.id), computerChoice()) + "\r\n";
-            p.textContent += playerScore + "-" + computerScore;
+            p.textContent += "Player Score   " +playerScore + "-" + computerScore + "   Computer Score \r\n";
    
             div.appendChild(p);
             textContainer.appendChild(div);
 
 
             if(playerScore == 5 || computerScore == 5) {
+                if(playerScore == 5) {
+                    p.textContent += "You win! Please reload to play again! \r\n";
+                }
+                else if(computerScore == 5) {
+                    p.textContent += "You lost! Please reload to play again! \r\n";
+                }
                 var elems = document.getElementsByClassName("btn");
                 for(var i = 0; i < elems.length; i++) {
                     elems[i].disabled = true;
